@@ -12,7 +12,7 @@ const slides = [
     subtitle: "The Future of Enterprise Cybersecurity",
     author: "Kenneth Lightfoot",
     studentId: "Student ID: 013130515",
-    course: "D339 – Professional Communication (WGM2)",
+    course: "D339 – Technical Communication (WGM2)",
     date: "March 2026",
   },
   {
@@ -273,7 +273,7 @@ export default function PresentationPage() {
             </div>
             <div className="hidden md:block">
               <p className="text-white/90 text-sm font-semibold">Western Governors University</p>
-              <p className="text-white/40 text-xs">D339 – Professional Communication</p>
+              <p className="text-white/40 text-xs">D339 – Technical Communication</p>
             </div>
           </div>
         </div>
