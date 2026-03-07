@@ -41,6 +41,16 @@ const slides = [
   },
   {
     id: 3,
+    type: "comparison",
+    title: "Traditional Security vs. Zero Trust",
+  },
+  {
+    id: 4,
+    type: "diagram",
+    title: "Zero Trust Access Flow",
+  },
+  {
+    id: 5,
     type: "components",
     title: "Core Components of Zero Trust",
     components: [
@@ -71,7 +81,7 @@ const slides = [
     ],
   },
   {
-    id: 4,
+    id: 6,
     type: "benefits",
     title: "Benefits for Our Organization",
     benefits: [
@@ -98,7 +108,7 @@ const slides = [
     ],
   },
   {
-    id: 5,
+    id: 7,
     type: "itbenefits",
     title: "Benefits for Our IT Team",
     icon: Users,
@@ -122,7 +132,7 @@ const slides = [
     ],
   },
   {
-    id: 6,
+    id: 8,
     type: "conclusion",
     title: "Conclusion",
     icon: CheckCircle,
@@ -134,7 +144,7 @@ const slides = [
     ],
   },
   {
-    id: 7,
+    id: 9,
     type: "references",
     title: "References",
     icon: FileText,
@@ -232,6 +242,156 @@ export default function PresentationPage() {
                     ))}
                   </ul>
                 </div>
+              </>
+            )}
+
+            {slide.type === "comparison" && (
+              <>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{slide.title}</h2>
+                <p className="text-slate-400 text-sm mb-4">
+                  Figure 1: Comparison of security models <span className="text-cyan-400">(Adapted from Rose et al., 2020; Fortinet, n.d.)</span>
+                </p>
+                <div className="flex-1 grid grid-cols-2 gap-6">
+                  {/* Traditional Security */}
+                  <div className="bg-slate-800/50 border border-red-500/30 rounded-lg p-5">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-3 h-3 bg-red-500 rounded-full" />
+                      <h3 className="font-bold text-red-400 text-lg">Traditional Security</h3>
+                    </div>
+                    <p className="text-slate-400 text-xs mb-4 italic">"Trust but verify"</p>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-1.5 shrink-0" />
+                        <p className="text-slate-300 text-sm">Perimeter-based defense</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-1.5 shrink-0" />
+                        <p className="text-slate-300 text-sm">Implicit trust inside network</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-1.5 shrink-0" />
+                        <p className="text-slate-300 text-sm">VPN-dependent remote access</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-1.5 shrink-0" />
+                        <p className="text-slate-300 text-sm">Static access controls</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-1.5 shrink-0" />
+                        <p className="text-slate-300 text-sm">Lateral movement possible</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Zero Trust */}
+                  <div className="bg-slate-800/50 border border-emerald-500/30 rounded-lg p-5">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-3 h-3 bg-emerald-500 rounded-full" />
+                      <h3 className="font-bold text-emerald-400 text-lg">Zero Trust Architecture</h3>
+                    </div>
+                    <p className="text-slate-400 text-xs mb-4 italic">"Never trust, always verify"</p>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-1.5 shrink-0" />
+                        <p className="text-slate-300 text-sm">Identity-centric protection</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-1.5 shrink-0" />
+                        <p className="text-slate-300 text-sm">No implicit trust anywhere</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-1.5 shrink-0" />
+                        <p className="text-slate-300 text-sm">Secure access without VPN</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-1.5 shrink-0" />
+                        <p className="text-slate-300 text-sm">Continuous verification</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-1.5 shrink-0" />
+                        <p className="text-slate-300 text-sm">Microsegmentation limits spread</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {slide.type === "diagram" && (
+              <>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{slide.title}</h2>
+                <p className="text-slate-400 text-sm mb-6">
+                  Figure 2: Zero Trust verification process <span className="text-cyan-400">(Adapted from Palo Alto Networks, n.d.; Rose et al., 2020)</span>
+                </p>
+                <div className="flex-1 flex items-center justify-center">
+                  <div className="flex items-center gap-2 md:gap-4">
+                    {/* User */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-16 h-16 md:w-20 md:h-20 bg-slate-700 border-2 border-cyan-500 rounded-full flex items-center justify-center">
+                        <Users className="w-8 h-8 md:w-10 md:h-10 text-cyan-400" />
+                      </div>
+                      <p className="text-slate-300 text-xs md:text-sm mt-2 font-medium">User Request</p>
+                    </div>
+                    
+                    {/* Arrow */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 md:w-12 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500" />
+                      <ChevronRight className="w-4 h-4 text-cyan-400 -mt-2" />
+                    </div>
+
+                    {/* Verify Identity */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-16 h-16 md:w-20 md:h-20 bg-slate-700 border-2 border-blue-500 rounded-lg flex items-center justify-center">
+                        <Shield className="w-8 h-8 md:w-10 md:h-10 text-blue-400" />
+                      </div>
+                      <p className="text-slate-300 text-xs md:text-sm mt-2 font-medium text-center">Verify<br/>Identity</p>
+                    </div>
+
+                    {/* Arrow */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 md:w-12 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500" />
+                      <ChevronRight className="w-4 h-4 text-blue-400 -mt-2" />
+                    </div>
+
+                    {/* Check Device */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-16 h-16 md:w-20 md:h-20 bg-slate-700 border-2 border-purple-500 rounded-lg flex items-center justify-center">
+                        <Eye className="w-8 h-8 md:w-10 md:h-10 text-purple-400" />
+                      </div>
+                      <p className="text-slate-300 text-xs md:text-sm mt-2 font-medium text-center">Assess<br/>Context</p>
+                    </div>
+
+                    {/* Arrow */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 md:w-12 h-0.5 bg-gradient-to-r from-purple-500 to-amber-500" />
+                      <ChevronRight className="w-4 h-4 text-purple-400 -mt-2" />
+                    </div>
+
+                    {/* Least Privilege */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-16 h-16 md:w-20 md:h-20 bg-slate-700 border-2 border-amber-500 rounded-lg flex items-center justify-center">
+                        <Lock className="w-8 h-8 md:w-10 md:h-10 text-amber-400" />
+                      </div>
+                      <p className="text-slate-300 text-xs md:text-sm mt-2 font-medium text-center">Apply Least<br/>Privilege</p>
+                    </div>
+
+                    {/* Arrow */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 md:w-12 h-0.5 bg-gradient-to-r from-amber-500 to-emerald-500" />
+                      <ChevronRight className="w-4 h-4 text-amber-400 -mt-2" />
+                    </div>
+
+                    {/* Resource */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-16 h-16 md:w-20 md:h-20 bg-slate-700 border-2 border-emerald-500 rounded-full flex items-center justify-center">
+                        <Network className="w-8 h-8 md:w-10 md:h-10 text-emerald-400" />
+                      </div>
+                      <p className="text-slate-300 text-xs md:text-sm mt-2 font-medium">Resource</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-center text-slate-400 text-xs md:text-sm mt-4">
+                  Each access request undergoes continuous verification regardless of location or network
+                </p>
               </>
             )}
 
