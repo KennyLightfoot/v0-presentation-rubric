@@ -185,6 +185,13 @@ const slides = [
         url: "https://www.fortinet.com/resources/cyberglossary/zero-trust-architecture",
       },
       {
+        author: "IBM Security",
+        year: "2023",
+        title: "Cost of a data breach report 2023",
+        source: "IBM",
+        url: "https://www.ibm.com/reports/data-breach",
+      },
+      {
         author: "Palo Alto Networks",
         year: "n.d.",
         title: "What is zero trust architecture? Key elements and use cases",
@@ -394,6 +401,9 @@ export default function PresentationPage() {
     const refs = [
       "Fortinet. (n.d.). What is zero trust architecture (ZTA)? Benefits and best practices.",
       "     https://www.fortinet.com/resources/cyberglossary/zero-trust-architecture",
+      "",
+      "IBM Security. (2023). Cost of a data breach report 2023. IBM.",
+      "     https://www.ibm.com/reports/data-breach",
       "",
       "Palo Alto Networks. (n.d.). What is zero trust architecture? Key elements and use cases.",
       "     https://www.paloaltonetworks.com/cyberpedia/what-is-a-zero-trust-architecture",
