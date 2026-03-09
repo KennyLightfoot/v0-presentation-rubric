@@ -18,6 +18,16 @@ const slides = [
   },
   {
     id: 2,
+    type: "agenda",
+    title: "Agenda",
+    thesis: "Zero Trust Architecture is the security framework our organization needs to protect against modern cyber threats",
+    mainPoints: [
+      { number: "01", title: "What is Zero Trust?", description: "Understanding the technology and how it works" },
+      { number: "02", title: "Benefits for Our Organization", description: "Why we should adopt this framework" },
+    ],
+  },
+  {
+    id: 3,
     type: "problem",
     title: "The Problem We Face",
     stats: [
@@ -257,7 +267,21 @@ export default function PresentationPage() {
     slide1.addText("The Future of Enterprise Cybersecurity", { x: 0.5, y: 3.3, w: 9, h: 0.5, fontSize: 20, color: "93C5FD", fontFace: "Arial", align: "center" })
     slide1.addText("Kenneth Lightfoot\nStudent ID: 013130515\nD339 – Technical Communication (WGM2)\nMarch 2026", { x: 0.5, y: 4.2, w: 9, h: 1.5, fontSize: 14, color: "FFFFFF", fontFace: "Arial", align: "center" })
 
-    // Slide 2: Problem
+    // Slide 2: Agenda
+    const slideAgenda = pptx.addSlide({ masterName: "WGU_MASTER" })
+    slideAgenda.addText("Agenda", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
+    slideAgenda.addShape(pptx.ShapeType.roundRect, { x: 0.5, y: 1.4, w: 9, h: 0.8, fill: { color: "1E3A5F" }, line: { color: "3B82F6", pt: 1 } })
+    slideAgenda.addText("Thesis: Zero Trust Architecture is the security framework our organization needs to protect against modern cyber threats", { x: 0.7, y: 1.5, w: 8.6, h: 0.6, fontSize: 12, color: "93C5FD", fontFace: "Arial" })
+    slideAgenda.addShape(pptx.ShapeType.roundRect, { x: 0.5, y: 2.4, w: 4.3, h: 1.4, fill: { color: "0A1628" }, line: { color: "3B82F6", pt: 1 } })
+    slideAgenda.addText("01", { x: 0.7, y: 2.5, w: 0.6, h: 0.4, fontSize: 18, bold: true, color: "3B82F6", fontFace: "Arial" })
+    slideAgenda.addText("What is Zero Trust?", { x: 1.3, y: 2.5, w: 3.3, h: 0.4, fontSize: 14, bold: true, color: "FFFFFF", fontFace: "Arial" })
+    slideAgenda.addText("Understanding the technology and how it works", { x: 0.7, y: 3, w: 3.9, h: 0.5, fontSize: 11, color: "9CA3AF", fontFace: "Arial" })
+    slideAgenda.addShape(pptx.ShapeType.roundRect, { x: 5.2, y: 2.4, w: 4.3, h: 1.4, fill: { color: "0A1628" }, line: { color: "3B82F6", pt: 1 } })
+    slideAgenda.addText("02", { x: 5.4, y: 2.5, w: 0.6, h: 0.4, fontSize: 18, bold: true, color: "3B82F6", fontFace: "Arial" })
+    slideAgenda.addText("Benefits for Our Organization", { x: 6, y: 2.5, w: 3.3, h: 0.4, fontSize: 14, bold: true, color: "FFFFFF", fontFace: "Arial" })
+    slideAgenda.addText("Why we should adopt this framework", { x: 5.4, y: 3, w: 3.9, h: 0.5, fontSize: 11, color: "9CA3AF", fontFace: "Arial" })
+
+    // Slide 3: Problem
     const slide2 = pptx.addSlide({ masterName: "WGU_MASTER" })
     slide2.addText("The Problem We Face", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
     const stats = [{ num: "83%", label: "of organizations\nexperienced breaches" }, { num: "$4.45M", label: "average cost of\na data breach" }, { num: "277", label: "days to identify\nand contain" }]
@@ -286,7 +310,7 @@ export default function PresentationPage() {
     // Slide 4: Comparison
     const slide4 = pptx.addSlide({ masterName: "WGU_MASTER" })
     slide4.addText("Traditional Security vs. Zero Trust", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
-    slide4.addText("Image Derived from Information: (Rose et al., 2020; Fortinet, n.d.)", { x: 0.5, y: 1.2, w: 9, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
+    slide4.addText("Image Derived from Information (Rose et al., 2020; Fortinet, n.d.)", { x: 0.5, y: 1.2, w: 9, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
     slide4.addShape(pptx.ShapeType.roundRect, { x: 0.4, y: 1.6, w: 4.5, h: 3.4, fill: { color: "0A1628" }, line: { color: "EF4444", pt: 1 } })
     slide4.addText("Traditional Security", { x: 0.6, y: 1.8, w: 4, h: 0.4, fontSize: 16, bold: true, color: "F87171", fontFace: "Arial" })
     const tradPoints = ["Perimeter-based defense", "Implicit trust inside network", "VPN-dependent remote access", "Static access controls"]
@@ -299,7 +323,7 @@ export default function PresentationPage() {
     // Slide 5: Flow Diagram
     const slide5 = pptx.addSlide({ masterName: "WGU_MASTER" })
     slide5.addText("How Zero Trust Works", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
-    slide5.addText("Image Derived from Information: (Palo Alto Networks, n.d.; Rose et al., 2020)", { x: 0.5, y: 1.2, w: 9, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
+    slide5.addText("Image Derived from Information (Palo Alto Networks, n.d.; Rose et al., 2020)", { x: 0.5, y: 1.2, w: 9, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
     const flowSteps = ["User Request", "Verify Identity", "Assess Context", "Apply Least Privilege", "Access Resource"]
     flowSteps.forEach((step, i) => {
       slide5.addShape(pptx.ShapeType.roundRect, { x: 0.3 + (i * 1.9), y: 2, w: 1.7, h: 1.2, fill: { color: "0A1628" }, line: { color: "3B82F6", pt: 2 } })
@@ -500,7 +524,46 @@ export default function PresentationPage() {
               </div>
             )}
 
-            {/* PROBLEM SLIDE - NEW */}
+            {/* AGENDA SLIDE */}
+            {slide.type === "agenda" && (
+              <>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-blue-500/20 backdrop-blur rounded-xl flex items-center justify-center border border-blue-500/30">
+                    <FileText className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-black text-white">{slide.title}</h2>
+                </div>
+                
+                {/* Thesis Statement */}
+                <div className="bg-gradient-to-r from-blue-500/10 to-white/5 border border-blue-400/30 rounded-xl p-6 mb-8">
+                  <p className="text-xs text-blue-300/60 uppercase tracking-widest mb-2">Thesis</p>
+                  <p className="text-white text-lg md:text-xl font-medium leading-relaxed">
+                    {'thesis' in slide && slide.thesis}
+                  </p>
+                </div>
+                
+                {/* Main Points Preview */}
+                <div className="flex-1 flex items-center">
+                  <div className="grid grid-cols-2 gap-6 w-full">
+                    {'mainPoints' in slide && slide.mainPoints?.map((point, index) => (
+                      <div key={index} className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
+                        <div className="flex items-start gap-4">
+                          <div className="w-14 h-14 bg-blue-500/20 border border-blue-400/30 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                            <span className="text-blue-300 font-black text-xl">{point.number}</span>
+                          </div>
+                          <div>
+                            <h3 className="text-white font-bold text-xl mb-2">{point.title}</h3>
+                            <p className="text-white/60 text-sm leading-relaxed">{point.description}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* PROBLEM SLIDE */}
             {slide.type === "problem" && (
               <>
                 <div className="flex items-center gap-4 mb-6">
@@ -582,7 +645,7 @@ export default function PresentationPage() {
               <>
                 <h2 className="text-3xl md:text-4xl font-black text-white mb-2">{slide.title}</h2>
                 <p className="text-white/50 text-sm mb-6">
-                  Image Derived from Information: <span className="text-blue-300">(Rose et al., 2020; Fortinet, n.d.)</span>
+                  Image Derived from Information <span className="text-blue-300">(Rose et al., 2020; Fortinet, n.d.)</span>
                 </p>
                 <div className="flex-1 grid grid-cols-2 gap-8">
                   {/* Traditional Security */}
@@ -659,7 +722,7 @@ export default function PresentationPage() {
               <>
                 <h2 className="text-3xl md:text-4xl font-black text-white mb-2">{slide.title}</h2>
                 <p className="text-white/50 text-sm mb-6">
-                  Image Derived from Information: <span className="text-blue-300">(Palo Alto Networks, n.d.; Rose et al., 2020)</span>
+                  Image Derived from Information <span className="text-blue-300">(Palo Alto Networks, n.d.; Rose et al., 2020)</span>
                 </p>
                 <div className="flex-1 flex items-center justify-center">
                   <div className="flex items-center gap-2 md:gap-4">

@@ -116,7 +116,7 @@ slide4.addText("Traditional Security vs. Zero Trust", {
   x: 0.5, y: 0.7, w: 9, h: 0.6,
   fontSize: 28, bold: true, color: WHITE, fontFace: "Arial"
 });
-slide4.addText("Image Derived from Information: (Rose et al., 2020; Fortinet, n.d.)", {
+slide4.addText("Image Derived from Information (Rose et al., 2020; Fortinet, n.d.)", {
   x: 0.5, y: 1.2, w: 9, h: 0.3,
   fontSize: 10, color: "60A5FA", fontFace: "Arial"
 });
@@ -151,7 +151,7 @@ slide5.addText("Zero Trust Access Flow", {
   x: 0.5, y: 0.7, w: 9, h: 0.6,
   fontSize: 28, bold: true, color: WHITE, fontFace: "Arial"
 });
-slide5.addText("Image Derived from Information: (Palo Alto Networks, n.d.; Rose et al., 2020)", {
+slide5.addText("Image Derived from Information (Palo Alto Networks, n.d.; Rose et al., 2020)", {
   x: 0.5, y: 1.2, w: 9, h: 0.3,
   fontSize: 10, color: "60A5FA", fontFace: "Arial"
 });
