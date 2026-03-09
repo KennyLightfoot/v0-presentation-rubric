@@ -286,7 +286,7 @@ export default function PresentationPage() {
     // Slide 4: Comparison
     const slide4 = pptx.addSlide({ masterName: "WGU_MASTER" })
     slide4.addText("Traditional Security vs. Zero Trust", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
-    slide4.addText("Figure 1: Security Model Comparison (Rose et al., 2020; Fortinet, n.d.)", { x: 0.5, y: 1.2, w: 9, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
+    slide4.addText("Image Derived from Information: (Rose et al., 2020; Fortinet, n.d.)", { x: 0.5, y: 1.2, w: 9, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
     slide4.addShape(pptx.ShapeType.roundRect, { x: 0.4, y: 1.6, w: 4.5, h: 3.4, fill: { color: "0A1628" }, line: { color: "EF4444", pt: 1 } })
     slide4.addText("Traditional Security", { x: 0.6, y: 1.8, w: 4, h: 0.4, fontSize: 16, bold: true, color: "F87171", fontFace: "Arial" })
     const tradPoints = ["Perimeter-based defense", "Implicit trust inside network", "VPN-dependent remote access", "Static access controls"]
@@ -299,7 +299,7 @@ export default function PresentationPage() {
     // Slide 5: Flow Diagram
     const slide5 = pptx.addSlide({ masterName: "WGU_MASTER" })
     slide5.addText("How Zero Trust Works", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
-    slide5.addText("Figure 2: Zero Trust Access Flow (Palo Alto Networks, n.d.; Rose et al., 2020)", { x: 0.5, y: 1.2, w: 9, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
+    slide5.addText("Image Derived from Information: (Palo Alto Networks, n.d.; Rose et al., 2020)", { x: 0.5, y: 1.2, w: 9, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
     const flowSteps = ["User Request", "Verify Identity", "Assess Context", "Apply Least Privilege", "Access Resource"]
     flowSteps.forEach((step, i) => {
       slide5.addShape(pptx.ShapeType.roundRect, { x: 0.3 + (i * 1.9), y: 2, w: 1.7, h: 1.2, fill: { color: "0A1628" }, line: { color: "3B82F6", pt: 2 } })
@@ -582,7 +582,7 @@ export default function PresentationPage() {
               <>
                 <h2 className="text-3xl md:text-4xl font-black text-white mb-2">{slide.title}</h2>
                 <p className="text-white/50 text-sm mb-6">
-                  Figure 1: Security Model Comparison <span className="text-blue-300">(Rose et al., 2020; Fortinet, n.d.)</span>
+                  Image Derived from Information: <span className="text-blue-300">(Rose et al., 2020; Fortinet, n.d.)</span>
                 </p>
                 <div className="flex-1 grid grid-cols-2 gap-8">
                   {/* Traditional Security */}
@@ -659,7 +659,7 @@ export default function PresentationPage() {
               <>
                 <h2 className="text-3xl md:text-4xl font-black text-white mb-2">{slide.title}</h2>
                 <p className="text-white/50 text-sm mb-6">
-                  Figure 2: Zero Trust Verification Flow <span className="text-blue-300">(Palo Alto Networks, n.d.; Rose et al., 2020)</span>
+                  Image Derived from Information: <span className="text-blue-300">(Palo Alto Networks, n.d.; Rose et al., 2020)</span>
                 </p>
                 <div className="flex-1 flex items-center justify-center">
                   <div className="flex items-center gap-2 md:gap-4">
