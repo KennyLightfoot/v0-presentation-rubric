@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight, Shield, Users, Lock, Eye, Network, CheckCircle, FileText, ArrowRight, AlertTriangle, TrendingUp, Globe, Zap } from "lucide-react"
+import { ChevronLeft, ChevronRight, Shield, Users, Lock, Eye, Network, CheckCircle, FileText, ArrowRight, AlertTriangle, TrendingUp, Globe, Zap, Download } from "lucide-react"
+import PptxGenJS from "pptxgenjs"
 import { Button } from "@/components/ui/button"
 
 const slides = [
@@ -232,6 +233,161 @@ export default function PresentationPage() {
 
   const slide = slides[currentSlide]
 
+  const downloadPPTX = async () => {
+    const WGU_NAVY = "003057"
+    const pptx = new PptxGenJS()
+    
+    pptx.author = "Kenneth Lightfoot"
+    pptx.title = "Zero Trust Architecture: The Future of Enterprise Cybersecurity"
+    pptx.subject = "Technical Communication Presentation"
+    pptx.company = "Western Governors University"
+
+    pptx.defineSlideMaster({
+      title: "WGU_MASTER",
+      background: { color: WGU_NAVY },
+      objects: [
+        { rect: { x: 0, y: 0, w: "100%", h: 0.5, fill: { color: "002244" } } },
+        { text: { text: "WGU | D339 – Technical Communication", options: { x: 0.3, y: 0.1, w: 4, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" } } },
+      ],
+    })
+
+    // Slide 1: Title
+    const slide1 = pptx.addSlide({ masterName: "WGU_MASTER" })
+    slide1.addText("ZERO TRUST\nARCHITECTURE", { x: 0.5, y: 1.5, w: 9, h: 1.8, fontSize: 48, bold: true, color: "FFFFFF", fontFace: "Arial", align: "center" })
+    slide1.addText("The Future of Enterprise Cybersecurity", { x: 0.5, y: 3.3, w: 9, h: 0.5, fontSize: 20, color: "93C5FD", fontFace: "Arial", align: "center" })
+    slide1.addText("Kenneth Lightfoot\nStudent ID: 013130515\nD339 – Technical Communication (WGM2)\nMarch 2026", { x: 0.5, y: 4.2, w: 9, h: 1.5, fontSize: 14, color: "FFFFFF", fontFace: "Arial", align: "center" })
+
+    // Slide 2: Problem
+    const slide2 = pptx.addSlide({ masterName: "WGU_MASTER" })
+    slide2.addText("The Problem We Face", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
+    const stats = [{ num: "83%", label: "of organizations\nexperienced breaches" }, { num: "$4.45M", label: "average cost of\na data breach" }, { num: "277", label: "days to identify\nand contain" }]
+    stats.forEach((stat, i) => {
+      slide2.addShape(pptx.ShapeType.roundRect, { x: 0.5 + (i * 3.1), y: 1.5, w: 2.9, h: 1.8, fill: { color: "0A1628" }, line: { color: "3B82F6", pt: 1 } })
+      slide2.addText(stat.num, { x: 0.5 + (i * 3.1), y: 1.7, w: 2.9, h: 0.8, fontSize: 32, bold: true, color: "FFFFFF", align: "center", fontFace: "Arial" })
+      slide2.addText(stat.label, { x: 0.5 + (i * 3.1), y: 2.5, w: 2.9, h: 0.6, fontSize: 10, color: "9CA3AF", align: "center", fontFace: "Arial" })
+    })
+    slide2.addText("(IBM Security, 2023)", { x: 0.5, y: 3.5, w: 9, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
+    slide2.addText("Traditional perimeter-based security is no longer sufficient in today's threat landscape", { x: 0.5, y: 4, w: 9, h: 0.5, fontSize: 14, color: "D1D5DB", fontFace: "Arial", align: "center" })
+
+    // Slide 3: What is ZTA
+    const slide3 = pptx.addSlide({ masterName: "WGU_MASTER" })
+    slide3.addText("What is Zero Trust Architecture?", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
+    slide3.addShape(pptx.ShapeType.roundRect, { x: 1, y: 1.3, w: 8, h: 0.7, fill: { color: "1E3A5F" }, line: { color: "3B82F6", pt: 1 } })
+    slide3.addText("\"Never trust, always verify\"", { x: 1, y: 1.4, w: 8, h: 0.5, fontSize: 20, bold: true, color: "60A5FA", fontFace: "Arial", align: "center" })
+    const ztaPoints = [
+      "Assumes attackers may already be present in the environment (Rose et al., 2020)",
+      "No system, user, or asset should be implicitly trusted (Rose et al., 2020)",
+      "Treats every access request as if from an untrusted network (Fortinet, n.d.)"
+    ]
+    ztaPoints.forEach((point, i) => {
+      slide3.addText(`${i + 1}. ${point}`, { x: 0.5, y: 2.2 + (i * 0.6), w: 9, h: 0.5, fontSize: 14, color: "FFFFFF", fontFace: "Arial" })
+    })
+
+    // Slide 4: Comparison
+    const slide4 = pptx.addSlide({ masterName: "WGU_MASTER" })
+    slide4.addText("Traditional Security vs. Zero Trust", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
+    slide4.addText("Figure 1: Security Model Comparison (Rose et al., 2020; Fortinet, n.d.)", { x: 0.5, y: 1.2, w: 9, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
+    slide4.addShape(pptx.ShapeType.roundRect, { x: 0.4, y: 1.6, w: 4.5, h: 3.4, fill: { color: "0A1628" }, line: { color: "EF4444", pt: 1 } })
+    slide4.addText("Traditional Security", { x: 0.6, y: 1.8, w: 4, h: 0.4, fontSize: 16, bold: true, color: "F87171", fontFace: "Arial" })
+    const tradPoints = ["Perimeter-based defense", "Implicit trust inside network", "VPN-dependent remote access", "Static access controls"]
+    tradPoints.forEach((p, i) => slide4.addText(`• ${p}`, { x: 0.7, y: 2.4 + (i * 0.5), w: 4, h: 0.4, fontSize: 12, color: "FFFFFF", fontFace: "Arial" }))
+    slide4.addShape(pptx.ShapeType.roundRect, { x: 5.1, y: 1.6, w: 4.5, h: 3.4, fill: { color: "0A1628" }, line: { color: "10B981", pt: 1 } })
+    slide4.addText("Zero Trust Architecture", { x: 5.3, y: 1.8, w: 4, h: 0.4, fontSize: 16, bold: true, color: "34D399", fontFace: "Arial" })
+    const ztPoints = ["Identity-centric protection", "No implicit trust anywhere", "Secure access without VPN", "Continuous verification"]
+    ztPoints.forEach((p, i) => slide4.addText(`• ${p}`, { x: 5.4, y: 2.4 + (i * 0.5), w: 4, h: 0.4, fontSize: 12, color: "FFFFFF", fontFace: "Arial" }))
+
+    // Slide 5: Flow Diagram
+    const slide5 = pptx.addSlide({ masterName: "WGU_MASTER" })
+    slide5.addText("How Zero Trust Works", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
+    slide5.addText("Figure 2: Zero Trust Access Flow (Palo Alto Networks, n.d.; Rose et al., 2020)", { x: 0.5, y: 1.2, w: 9, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
+    const flowSteps = ["User Request", "Verify Identity", "Assess Context", "Apply Least Privilege", "Access Resource"]
+    flowSteps.forEach((step, i) => {
+      slide5.addShape(pptx.ShapeType.roundRect, { x: 0.3 + (i * 1.9), y: 2, w: 1.7, h: 1.2, fill: { color: "0A1628" }, line: { color: "3B82F6", pt: 2 } })
+      slide5.addText(step, { x: 0.3 + (i * 1.9), y: 2.3, w: 1.7, h: 0.8, fontSize: 11, bold: true, color: "60A5FA", align: "center", fontFace: "Arial" })
+      if (i < 4) slide5.addText("→", { x: 1.9 + (i * 1.9), y: 2.4, w: 0.3, h: 0.5, fontSize: 18, color: "60A5FA", align: "center", fontFace: "Arial" })
+    })
+    slide5.addText("Each access request undergoes continuous verification regardless of location", { x: 0.5, y: 3.5, w: 9, h: 0.4, fontSize: 12, color: "9CA3AF", fontFace: "Arial", align: "center" })
+
+    // Slide 6: Four Pillars
+    const slide6 = pptx.addSlide({ masterName: "WGU_MASTER" })
+    slide6.addText("The Four Pillars", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
+    const pillars = [
+      { title: "Identity Verification", desc: "Strict authentication for every user and device", cite: "(Fortinet, n.d.)" },
+      { title: "Least Privilege Access", desc: "Minimum permissions necessary", cite: "(Palo Alto, n.d.)" },
+      { title: "Microsegmentation", desc: "Divide network into isolated zones", cite: "(Fortinet, n.d.)" },
+      { title: "Continuous Monitoring", desc: "Real-time evaluation and response", cite: "(Rose et al., 2020)" }
+    ]
+    pillars.forEach((p, i) => {
+      const x = (i % 2) * 4.7 + 0.4
+      const y = Math.floor(i / 2) * 1.7 + 1.3
+      slide6.addShape(pptx.ShapeType.roundRect, { x, y, w: 4.5, h: 1.5, fill: { color: "0A1628" }, line: { color: "3B82F6", pt: 1 } })
+      slide6.addText(`0${i + 1}. ${p.title}`, { x: x + 0.2, y: y + 0.15, w: 4, h: 0.4, fontSize: 14, bold: true, color: "FFFFFF", fontFace: "Arial" })
+      slide6.addText(p.desc, { x: x + 0.2, y: y + 0.6, w: 4, h: 0.4, fontSize: 11, color: "D1D5DB", fontFace: "Arial" })
+      slide6.addText(p.cite, { x: x + 0.2, y: y + 1, w: 4, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
+    })
+
+    // Slide 7: Org Benefits
+    const slide7 = pptx.addSlide({ masterName: "WGU_MASTER" })
+    slide7.addText("Why Our Organization Needs This", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
+    const orgBenefits = [
+      { title: "Reduced Attack Surface", desc: "Require verification at every access point" },
+      { title: "Improved Threat Detection", desc: "Enhanced visibility into all activity" },
+      { title: "Secure Remote Access", desc: "Enable access without vulnerable VPNs" },
+      { title: "Streamlined Compliance", desc: "Consistent policies and audit trails" }
+    ]
+    orgBenefits.forEach((b, i) => {
+      const x = (i % 2) * 4.7 + 0.4
+      const y = Math.floor(i / 2) * 1.6 + 1.3
+      slide7.addShape(pptx.ShapeType.roundRect, { x, y, w: 4.5, h: 1.4, fill: { color: "0A1628" }, line: { color: "10B981", pt: 1 } })
+      slide7.addText(b.title, { x: x + 0.2, y: y + 0.2, w: 4, h: 0.4, fontSize: 14, bold: true, color: "34D399", fontFace: "Arial" })
+      slide7.addText(b.desc, { x: x + 0.2, y: y + 0.65, w: 4, h: 0.5, fontSize: 11, color: "D1D5DB", fontFace: "Arial" })
+    })
+    slide7.addText("(Fortinet, n.d.; Palo Alto Networks, n.d.)", { x: 0.5, y: 4.6, w: 9, h: 0.3, fontSize: 10, color: "60A5FA", fontFace: "Arial" })
+
+    // Slide 8: IT Benefits
+    const slide8 = pptx.addSlide({ masterName: "WGU_MASTER" })
+    slide8.addText("Benefits for Our IT Team", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
+    const itBenefits = ["Faster threat detection and response (Palo Alto Networks, n.d.)", "Real-time identification of suspicious behavior", "Same security level for remote and on-site workers (Fortinet, n.d.)", "Reduced complexity managing hybrid workforce"]
+    itBenefits.forEach((b, i) => {
+      slide8.addText(`${i + 1}. ${b}`, { x: 0.5, y: 1.4 + (i * 0.7), w: 9, h: 0.5, fontSize: 14, color: "FFFFFF", fontFace: "Arial" })
+    })
+
+    // Slide 9: Conclusion
+    const slide9 = pptx.addSlide({ masterName: "WGU_MASTER" })
+    slide9.addText("Key Takeaways", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
+    slide9.addShape(pptx.ShapeType.roundRect, { x: 1, y: 1.2, w: 8, h: 0.6, fill: { color: "1E3A5F" }, line: { color: "3B82F6", pt: 1 } })
+    slide9.addText("Zero Trust is a strategic imperative for modern security", { x: 1, y: 1.3, w: 8, h: 0.4, fontSize: 14, bold: true, color: "60A5FA", fontFace: "Arial", align: "center" })
+    const conclusions = ["Zero Trust represents a necessary evolution in enterprise cybersecurity", "\"Never trust, always verify\" provides comprehensive protection", "Benefits include reduced attack surface and secure remote access", "Phased implementation positions our organization for resilience"]
+    conclusions.forEach((c, i) => {
+      slide9.addText(`• ${c}`, { x: 0.5, y: 2 + (i * 0.55), w: 9, h: 0.4, fontSize: 13, color: "FFFFFF", fontFace: "Arial" })
+    })
+    slide9.addShape(pptx.ShapeType.roundRect, { x: 1.5, y: 4.3, w: 7, h: 0.6, fill: { color: "3B82F6" } })
+    slide9.addText("Ready to move forward with Zero Trust implementation", { x: 1.5, y: 4.35, w: 7, h: 0.5, fontSize: 14, bold: true, color: "FFFFFF", fontFace: "Arial", align: "center" })
+
+    // Slide 10: References
+    const slide10 = pptx.addSlide({ masterName: "WGU_MASTER" })
+    slide10.addText("References", { x: 0.5, y: 0.7, w: 9, h: 0.6, fontSize: 28, bold: true, color: "FFFFFF", fontFace: "Arial" })
+    const refs = [
+      "Fortinet. (n.d.). What is zero trust architecture (ZTA)? Benefits and best practices.",
+      "     https://www.fortinet.com/resources/cyberglossary/zero-trust-architecture",
+      "",
+      "Palo Alto Networks. (n.d.). What is zero trust architecture? Key elements and use cases.",
+      "     https://www.paloaltonetworks.com/cyberpedia/what-is-a-zero-trust-architecture",
+      "",
+      "Rose, S., Borchert, O., Mitchell, S., & Connelly, S. (2020). Zero trust architecture",
+      "     (NIST SP 800-207). National Institute of Standards and Technology.",
+      "     https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-207.pdf"
+    ]
+    let yPos = 1.3
+    refs.forEach((ref) => {
+      const isUrl = ref.trim().startsWith("https://")
+      slide10.addText(ref.trim(), { x: ref.startsWith("     ") ? 0.7 : 0.5, y: yPos, w: 9, h: 0.35, fontSize: 11, color: isUrl ? "60A5FA" : "FFFFFF", fontFace: "Arial" })
+      yPos += ref === "" ? 0.15 : 0.35
+    })
+
+    await pptx.writeFile({ fileName: "Zero-Trust-Architecture-Presentation.pptx" })
+  }
+
   return (
     <div className="min-h-screen bg-[#001a33] flex flex-col overflow-hidden relative">
       {/* Animated Background */}
@@ -278,6 +434,13 @@ export default function PresentationPage() {
           </div>
         </div>
         <div className="flex items-center gap-4">
+          <Button
+            onClick={downloadPPTX}
+            className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl px-4 py-2 text-sm font-medium flex items-center gap-2 transition-all"
+          >
+            <Download className="w-4 h-4" />
+            <span className="hidden md:inline">Download PPTX</span>
+          </Button>
           <div className="text-right hidden md:block">
             <p className="text-white/60 text-xs">Slide</p>
             <p className="text-white font-bold text-lg">{currentSlide + 1}<span className="text-white/40 font-normal">/{slides.length}</span></p>

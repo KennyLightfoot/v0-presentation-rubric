@@ -311,6 +311,7 @@ references.forEach((ref) => {
 });
 
 // Save the file
-const outputPath = path.join(process.cwd(), "public", "Zero-Trust-Architecture-Presentation.pptx");
+const outputDir = "/vercel/share/v0-project/public";
+const outputPath = path.join(outputDir, "Zero-Trust-Architecture-Presentation.pptx");
 await pptx.writeFile({ fileName: outputPath });
 console.log(`PowerPoint saved to: ${outputPath}`);
